@@ -1,0 +1,8 @@
+{
+  "devDependencies": {
+    "@types/node": "^22.10.1"
+  },
+  "dependencies": {
+    "@radix-ui/react-separator": "^1.1.0"
+  }
+}

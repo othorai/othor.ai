@@ -1,0 +1,24 @@
+[submodule "services/backend-organizations"]
+	path = services/backend-organizations
+	url = https://github.com/othorai/backend-organizations.git
+[submodule "services/backend-metrics"]
+	path = services/backend-metrics
+	url = https://github.com/othorai/backend-metrics.git
+[submodule "services/backend-metric-discovery"]
+	path = services/backend-metric-discovery
+	url = https://github.com/othorai/backend-metric-discovery.git
+[submodule "services/backend-auth"]
+	path = services/backend-auth
+	url = https://github.com/othorai/backend-auth.git
+[submodule "services/backend-narrative"]
+	path = services/backend-narrative
+	url = https://github.com/othorai/backend-narrative-and-datasource.git
+[submodule "services/backend-chatbot"]
+	path = services/backend-chatbot
+	url = https://github.com/othorai/backend-chatbot.git
+[submodule "services/othor-frontend"]
+	path = services/othor-frontend
+	url = https://github.com/othorai/othor-frontend.git
+[submodule "services/backend-narrative-and-datasource"]
+	path = services/backend-narrative-and-datasource
+	url = https://github.com/othorai/backend-narrative-and-datasource.git

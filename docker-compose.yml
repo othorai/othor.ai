@@ -1,0 +1,173 @@
+version: '3.8'
+
+services:
+  # Frontend Service
+  frontend:
+    build:
+      context: ./services/othor-frontend
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./services/othor-frontend:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - NEXT_PUBLIC_API_URL=http://localhost:8000
+    depends_on:
+      - organizations
+      - metrics
+      - auth
+      - narrative
+      - chatbot
+
+  # Organization Service
+  organizations:
+    build:
+      context: ./services/backend-organizations
+      dockerfile: Dockerfile.dev
+    ports:
+      - "8001:8000"
+    volumes:
+      - ./services/backend-organizations:/app
+    environment:
+      - POSTGRES_HOST=postgres
+      - POSTGRES_DB=othor_organizations
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - JWT_SECRET=your_jwt_secret
+    depends_on:
+      - postgres
+
+  # Metrics Service
+  metrics:
+    build:
+      context: ./services/backend-metrics
+      dockerfile: Dockerfile.dev
+    ports:
+      - "8002:8000"
+    volumes:
+      - ./services/backend-metrics:/app
+    environment:
+      - POSTGRES_HOST=postgres
+      - POSTGRES_DB=othor_metrics
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    depends_on:
+      - postgres
+
+  # Metric Discovery Service
+  metric-discovery:
+    build:
+      context: ./services/backend-metric-discovery
+      dockerfile: Dockerfile.dev
+    ports:
+      - "8003:8000"
+    volumes:
+      - ./services/backend-metric-discovery:/app
+    environment:
+      - POSTGRES_HOST=postgres
+      - POSTGRES_DB=othor_metrics
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    depends_on:
+      - postgres
+
+  # Auth Service
+  auth:
+    build:
+      context: ./services/backend-auth
+      dockerfile: Dockerfile.dev
+    ports:
+      - "8004:8000"
+    volumes:
+      - ./services/backend-auth:/app
+    environment:
+      - POSTGRES_HOST=postgres
+      - POSTGRES_DB=othor_auth
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - JWT_SECRET=your_jwt_secret
+      - JWT_ALGORITHM=HS256
+    depends_on:
+      - postgres
+
+  # Narrative Service
+  narrative:
+    build:
+      context: ./services/backend-narrative-and-datasource
+      dockerfile: Dockerfile.dev
+    ports:
+      - "8005:8000"
+    volumes:
+      - ./services/backend-narrative-and-datasource:/app
+    environment:
+      - POSTGRES_HOST=postgres
+      - POSTGRES_DB=othor_narrative
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    depends_on:
+      - postgres
+
+  # Chatbot Service
+  chatbot:
+    build:
+      context: ./services/backend-chatbot
+      dockerfile: Dockerfile.dev
+    ports:
+      - "8006:8000"
+    volumes:
+      - ./services/backend-chatbot:/app
+    environment:
+      - POSTGRES_HOST=postgres
+      - POSTGRES_DB=othor_chatbot
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    depends_on:
+      - postgres
+
+  # Database Service
+  postgres:
+    image: postgres:14-alpine
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init-scripts:/docker-entrypoint-initdb.d
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_MULTIPLE_DATABASES=othor_organizations,othor_metrics,othor_auth,othor_narrative,othor_chatbot
+
+  # Redis for caching
+  redis:
+    image: redis:6-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+  # Nginx Reverse Proxy
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    volumes:
+      - type: bind
+        source: ./nginx/nginx.conf
+        target: /etc/nginx/nginx.conf
+        read_only: true
+    depends_on:
+      - frontend
+      - organizations
+      - metrics
+      - auth
+      - narrative
+      - chatbot
+
+volumes:
+  postgres_data:
+  redis_data:
