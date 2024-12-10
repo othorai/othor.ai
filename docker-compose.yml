@@ -76,6 +76,8 @@ services:
 
   # Auth Service
   auth:
+    env_file:
+     - ./services/backend-auth/.env  
     build:
       context: ./services/backend-auth
       dockerfile: Dockerfile.dev
@@ -90,6 +92,8 @@ services:
       - POSTGRES_PASSWORD=postgres
       - JWT_SECRET=your_jwt_secret
       - JWT_ALGORITHM=HS256
+      - SENDER_NAME=Othor AI
+      - FRONTEND_URL=http://localhost:8004
     depends_on:
       - postgres
 
