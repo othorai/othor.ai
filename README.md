@@ -113,4 +113,4 @@ We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guid
 
 ## License
 
-[AGPL-3.0](LICENSE)
+MIT License
