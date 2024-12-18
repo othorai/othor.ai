@@ -1,6 +1,6 @@
-![othor-ai-logo](https://github.com/user-attachments/assets/f4f6ab1c-699f-4f10-8d86-7b421e05a79c)
+<img width="559" alt="Group 1" src="https://github.com/user-attachments/assets/7c3fa192-950b-46f8-bfa4-dd0661de7bc1" />
 
-# Othor AI
+# Othor AI - 🚀 Data to Dashboards in Less than 10 minutes
 
 An AI-native fast, simple, and secure alternative to popular business intelligence solutions like Tableau, Power BI, and Looker. Othor utilizes large language models (LLMs) to deliver custom business intelligence solutions in minutes. Visit https://othor.ai/ to know more and book a demo.
 
@@ -24,6 +24,9 @@ Othor is built to be Fast, Simple & Secure.
 - NextJS
 - Tailwind CSS
 - Shadcn/ui
+
+## Screenshots
+
 
 ## Contact us
 Meet our team for any commercial inquiries - https://cal.com/othor
