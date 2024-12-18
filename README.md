@@ -26,6 +26,10 @@ Othor is built to be Fast, Simple & Secure.
 - Shadcn/ui
 
 ## Screenshots
+<img width="500" alt="Screenshot 2024-12-18 at 1 37 47 PM" src="https://github.com/user-attachments/assets/8032a93e-ab00-4872-867b-99f3413a1572" />
+<img width="500" alt="Screenshot 2024-12-18 at 1 38 55 PM" src="https://github.com/user-attachments/assets/583406e0-3d5d-4294-adae-d5731f9d5b18" />
+<img width="500" alt="Screenshot 2024-12-18 at 1 39 25 PM" src="https://github.com/user-attachments/assets/2d55274e-5dc2-4c11-9d37-7ebd4a070420" />
+<img width="500" alt="Screenshot 2024-12-18 at 1 39 45 PM" src="https://github.com/user-attachments/assets/458ca938-397d-4529-9630-174c56f8958b" />
 
 
 ## Contact us
