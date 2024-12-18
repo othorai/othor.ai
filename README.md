@@ -25,6 +25,9 @@ Othor is built to be Fast, Simple & Secure.
 - Tailwind CSS
 - Shadcn/ui
 
+### Code guidance by
+- Anthropic Claude
+
 ## Screenshots
 ![Group 2(1)](https://github.com/user-attachments/assets/b5d720fb-4ca1-4c9d-b406-5c5276dda32e)
 
