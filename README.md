@@ -131,10 +131,17 @@ docker-compose up
 
 See [deployment documentation](docs/deployment/production.md) for production setup instructions.
 
-## Team behind Othor 1.0 release
+## Team behind Othor 1.0(RuneWeaver) release
 
 | [<img src="https://github.com/NairKoroth.png" width="80px;" alt="Nair Koroth"/><br /><sub><b>NairKoroth</b></sub>](https://github.com/NairKoroth) | [<img src="https://github.com/nekender.png" width="80px;" alt="User2"/><br /><sub><b>nekender</b></sub>](https://github.com/nekender) | [<img src="https://github.com/ritttwaj.png" width="80px;" alt="User3"/><br /><sub><b>ritttwaj</b></sub>](https://github.com/ritttwaj) |
 | :---: | :---: | :---: |
+
+## Upcoming Releases: What We're Working On
+1. Single Sign-On (SSO) and integrations with popular applications
+2. Additional data source connectors
+3. New layout options for narratives
+4. Expanded chart types for dashboards
+5. Mobile app (Enterprise License)
 
 ## Contributing
 
