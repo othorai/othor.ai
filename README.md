@@ -75,25 +75,6 @@ The first version (v1.0) of Othor, codenamed RuneWeaver, was officially launched
         └── deploy.yml
 ```
 
-## Quick Start
-
-1. Clone this repository with submodules:
-```bash
-git clone --recursive https://github.com/othorai/othor-platform.git
-cd othor-platform
-```
-
-2. Initialize and update submodules:
-```bash
-git submodule init
-git submodule update
-```
-
-3. Start the development environment:
-```bash
-./scripts/dev.sh
-```
-
 ## Architecture
 
 The platform consists of several microservices:
@@ -106,7 +87,7 @@ The platform consists of several microservices:
 - **backend-chatbot**: Natural language data interaction
 - **othor-frontend**: React/Next.js web application
 
-## Development
+## Quick Start for Developers
 
 1. Install dependencies:
 ```bash
