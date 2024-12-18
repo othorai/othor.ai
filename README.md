@@ -1,3 +1,5 @@
+![othor-ai-logo](https://github.com/user-attachments/assets/f4f6ab1c-699f-4f10-8d86-7b421e05a79c)
+
 # Othor AI
 
 An AI-native business intelligence platform that delivers insights in minutes. Othor AI is an open-source alternative to traditional BI tools, utilizing large language models to provide automated insights, interactive data analysis, and narrative-driven reporting.
