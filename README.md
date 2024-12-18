@@ -139,10 +139,11 @@ See [deployment documentation](docs/deployment/production.md) for production set
 ## Upcoming Releases: What We're Working On
 1. Single Sign-On (SSO) and integrations with popular applications
 2. Additional data source connectors
-3. New layout options for narratives
-4. Expanded chart types for dashboards
-5. Mobile app (Enterprise License)
-6. Themes
+3. LLM Switcher & LLM connectors
+4. New layout options for narratives
+5. Expanded chart types for dashboards
+6. Mobile app (Enterprise License)
+7. Themes
 
 ## Contributing
 
