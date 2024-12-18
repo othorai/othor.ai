@@ -4,6 +4,11 @@
 
 An AI-native fast, simple, and secure alternative to popular business intelligence solutions like Tableau, Power BI, and Looker. Othor utilizes large language models (LLMs) to deliver custom business intelligence solutions in minutes.
 
+Othor is built to be Fast, Simple & Secure.
+1. **Fast & Modern**- Built with FastAPI for lightning-speed insights and real-time data updates.
+2. **Simple & Intuitive** - Engineered with React for an intuitive, seamless, and simple user experience.
+3. **Secure & Reliable** - Designed with care, ensuring robust security for your data and insights.
+
 ## Features
 
 - 🤖 **AI-Powered Analytics**: Get instant insights from your data using advanced language models
@@ -11,6 +16,17 @@ An AI-native fast, simple, and secure alternative to popular business intelligen
 - 📊 **Smart Charts**: Auto-generated and updated visualizations
 - 📝 **Business Narratives**: AI-generated executive summaries and reports
 - 🔐 **Enterprise Security**: Role-based access control and secure data handling
+
+### Built with
+- Python
+- FastAPI
+- React
+- NextJS
+- Tailwind CSS
+- Shadcn/ui
+
+## Contact us
+Meet our team for any commercial inquiries - https://cal.com/othor
 
 ## Repository Structure
 ```
