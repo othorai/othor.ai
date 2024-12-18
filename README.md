@@ -152,6 +152,9 @@ See [deployment documentation](docs/deployment/production.md) for production set
 ## Othor 2.0 - Bifrost 🌈
 We’re here for the long haul. Expect a major release of Othor 2.0 in 2025! Take a look at our labs and research(https://othor.ai/labs/) to catch a glimpse of what we’re planning for Bifrost (Othor 2.0). Bifrost will be more collaborative, more enterprise-focused, and even more magical than RuneWeaver (Othor 1.0), while preserving its simplicity, speed, and security.
 
+## Support Othor AI
+If you like the product we’ve built and what we’re striving for in the long term, please help promote Othor within your network. We’re also raising funds. For a detailed pitch deck, contact us at uk@othor.ai.
+
 ## Contributing
 
 We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
