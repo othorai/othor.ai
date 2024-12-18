@@ -2,7 +2,7 @@
 
 # Othor AI
 
-An AI-native fast, simple, and secure alternative to popular business intelligence solutions like Tableau, Power BI, and Looker. Othor utilizes large language models (LLMs) to deliver custom business intelligence solutions in minutes.
+An AI-native fast, simple, and secure alternative to popular business intelligence solutions like Tableau, Power BI, and Looker. Othor utilizes large language models (LLMs) to deliver custom business intelligence solutions in minutes. Visit https://othor.ai/ to know more and book a demo.
 
 Othor is built to be Fast, Simple & Secure.
 1. **Fast & Modern**- Built with FastAPI for lightning-speed insights and real-time data updates.
