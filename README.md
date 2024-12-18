@@ -143,7 +143,8 @@ See [deployment documentation](docs/deployment/production.md) for production set
 4. New layout options for narratives
 5. Expanded chart types for dashboards
 6. Mobile app (Enterprise License)
-7. Themes
+7. Email alerts
+8. Themes
 
 ## Contributing
 
