@@ -1,4 +1,4 @@
-<img width="559" alt="Group 1" src="https://github.com/user-attachments/assets/7c3fa192-950b-46f8-bfa4-dd0661de7bc1" />
+<img width="559" alt="Othor AI Logo" src="https://github.com/user-attachments/assets/7c3fa192-950b-46f8-bfa4-dd0661de7bc1" />
 
 # Othor AI - 🚀 Data to Dashboards in Less than 10 minutes
 [![stability-beta](https://img.shields.io/badge/stability-beta-33bbff.svg)](https://github.com/mkenney/software-guides/blob/master/STABILITY-BADGES.md#beta)
@@ -32,6 +32,9 @@ Othor is built to be Fast, Simple & Secure.
 ### Code guidance by
 - Anthropic Claude
 
+## Video
+<video width="800" alt="Othor Intro Video" src="https://github.com/user-attachments/assets/a5fb7c60-05f6-47b6-ad1c-3776e97d5466" />
+ 
 ## Screenshots
 ![Group 2(1)](https://github.com/user-attachments/assets/b5d720fb-4ca1-4c9d-b406-5c5276dda32e)
 
