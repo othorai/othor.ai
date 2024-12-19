@@ -37,6 +37,9 @@ services:
       - POSTGRES_HOST=${DB_HOST}
       - POSTGRES_DB=${DB_NAME}
       - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PORT=${DB_PORT:-5432}
+      - POSTGRES_SSLMODE=disable
+      - DATABASE_URL=postgresql://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}?sslmode=disable
       - POSTGRES_PASSWORD=${DB_PASSWORD}
       - JWT_SECRET=${SECRET_KEY}
     depends_on:
@@ -57,6 +60,9 @@ services:
       - POSTGRES_HOST=${DB_HOST}
       - POSTGRES_DB=${DB_NAME}
       - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PORT=${DB_PORT:-5432}
+      - POSTGRES_SSLMODE=disable
+      - DATABASE_URL=postgresql://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}?sslmode=disable
       - POSTGRES_PASSWORD=${DB_PASSWORD}
       - JWT_SECRET=${SECRET_KEY}
     depends_on:
@@ -78,10 +84,20 @@ services:
       - POSTGRES_DB=${DB_NAME}
       - POSTGRES_USER=${DB_USER}
       - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_PORT=${DB_PORT:-5432}
+      - POSTGRES_SSLMODE=disable
+      - DATABASE_URL=postgresql://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}?sslmode=disable
       - JWT_SECRET=${SECRET_KEY}
       - OPENAI_API_KEY=${OPENAI_API_KEY}
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy
+    restart: always
 
   # Auth Service
   auth:
@@ -99,17 +115,22 @@ services:
       - POSTGRES_DB=${DB_NAME}
       - POSTGRES_USER=${DB_USER}
       - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_PORT=${DB_PORT:-5432}
+      - POSTGRES_SSLMODE=disable
+      - DATABASE_URL=postgresql://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}?sslmode=disable
       - JWT_SECRET=${SECRET_KEY}
-      - JWT_ALGORITHM=${ALcGORITHM}
+      - JWT_ALGORITHM=${ALGORITHM}
       - SENDER_NAME=${APP_NAME}
       - FRONTEND_URL=${FRONTEND_URL}
-      - SMTP_SERVER=${SMTP_SERVER}
-      - SMTP_PORT=${SMTP_PORT}
-      - SMTP_USERNAME=${SMTP_USERNAME}
-      - SMTP_PASSWORD=${SMTP_PASSWORD}
-      - SENDER_EMAIL=${SENDER_EMAIL}
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy
+    restart: always
 
   # Narrative Service
   narrative:
@@ -127,6 +148,9 @@ services:
       - POSTGRES_DB=${DB_NAME}
       - POSTGRES_USER=${DB_USER}
       - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_PORT=${DB_PORT:-5432}
+      - POSTGRES_SSLMODE=disable
+      - DATABASE_URL=postgresql://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}?sslmode=disable
       - JWT_SECRET=${SECRET_KEY}
       - OPENAI_API_KEY=${OPENAI_API_KEY}
     depends_on:
@@ -148,6 +172,8 @@ services:
       - POSTGRES_DB=${DB_NAME}
       - POSTGRES_USER=${DB_USER}
       - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_SSLMODE=disable
+      - DATABASE_URL=postgresql://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}?sslmode=disable
       - JWT_SECRET=${SECRET_KEY}
       - OPENAI_API_KEY=${OPENAI_API_KEY}
     depends_on:
@@ -158,14 +184,42 @@ services:
     image: postgres:14-alpine
     ports:
       - "5432:5432"
+    env_file:
+     - .env
     volumes:
       - postgres_data:/var/lib/postgresql/data
-      - ./init-scripts:/docker-entrypoint-initdb.d
     environment:
-      - POSTGRES_USER=${DB_USER}
-      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_USER=${DB_USER:-postgres}
+      - POSTGRES_PASSWORD=${DB_PASSWORD:-postgres}
+      - POSTGRES_DB=othor_db
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-postgres}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Database Initializer Service
+  db-init:
+    env_file:
+     - .env
+    build:
+      context: ./init-scripts
+      dockerfile: Dockerfile
+    environment:
+      - POSTGRES_USER=${DB_USER:-postgres}
+      - POSTGRES_PASSWORD=${DB_PASSWORD:-postgres}
+      - POSTGRES_HOST=postgres
+      - POSTGRES_DB=${DB_NAME:-othor_db}
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
       - JWT_SECRET=${SECRET_KEY}
-      - POSTGRES_MULTIPLE_DATABASES=othor_organizations,othor_metrics,othor_auth,othor_narrative,othor_chatbot
+    volumes:
+      - ./init-scripts/sample-data:/sample-data:ro
+    depends_on:
+      postgres:
+        condition: service_healthy
+      auth:
+        condition: service_started
+    restart: on-failure:3
 
   # Redis for caching
   redis:
