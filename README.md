@@ -19,6 +19,8 @@ Othor is built to be Fast, Simple & Secure.
 - 📝 **Business Narratives**: AI-generated executive summaries and reports
 - 🔐 **Enterprise Security**: Role-based access control and secure data handling
 
+
+
 ### Built with
 - Python
 - FastAPI
