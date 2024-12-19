@@ -114,21 +114,23 @@ cp .env.example .env
 ```
 
 3. Start services:
-   To create database image locally 
+
+To create database image locally 
 ```bash
 docker-compose build
 ```
-  To starts services
+To starts services
 ```bash
 docker-compose up -d
 ```
 
 4. Stop services:
- To delete database volumes and start fresh
+
+To delete database volumes and start fresh
 ```bash
 docker-compose down -v
 ```
-  To just stop services
+To just stop services
 ```bash
 docker-compose down
 ```
