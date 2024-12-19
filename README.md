@@ -33,7 +33,7 @@ Othor is built to be Fast, Simple & Secure.
 - Anthropic Claude
 
 ## Video
-<video width="800" alt="Othor Intro Video" src="https://github.com/user-attachments/assets/a5fb7c60-05f6-47b6-ad1c-3776e97d5466" />
+<video width="800" alt="Othor Intro Video" src="https://github.com/user-attachments/assets/a5fb7c60-05f6-47b6-ad1c-3776e97d5466"></video>
  
 ## Screenshots
 ![Group 2(1)](https://github.com/user-attachments/assets/b5d720fb-4ca1-4c9d-b406-5c5276dda32e)
