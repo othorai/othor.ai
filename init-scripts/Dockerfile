@@ -1,3 +1,4 @@
+#init-scripts/Dockerfile
 FROM postgres:14-alpine
 
 # Install necessary tools

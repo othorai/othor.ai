@@ -1,3 +1,5 @@
+#init-scripts/init.sh
+
 #!/bin/bash
 # Enable verbose output
 set -x

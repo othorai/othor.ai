@@ -155,6 +155,7 @@ services:
       - OPENAI_API_KEY=${OPENAI_API_KEY}
     depends_on:
       - postgres
+      - mssql 
 
   # Chatbot Service
   chatbot:
@@ -197,6 +198,26 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+
+  mssql:
+    platform: linux/amd64 
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=YourStrong@Password123
+      - MSSQL_PID=Developer
+    ports:
+      - "1433:1433"
+    volumes:
+      - type: volume
+        source: mssql_data
+        target: /var/opt/mssql
+    healthcheck:
+      test: /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P "YourStrong@Password123" -Q "SELECT 1" || exit 1
+      interval: 10s
+      timeout: 3s
+      retries: 10
+      start_period: 10s
 
   # Database Initializer Service
   db-init:
@@ -248,5 +269,6 @@ services:
       - chatbot
 
 volumes:
-  postgres_data:
-  redis_data:
+  postgres_data:  
+  redis_data:      
+  mssql_data: 
