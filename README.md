@@ -119,7 +119,7 @@ You can check the logs using command below and if the initialization is sucessfu
 docker-compose logs -f db-innit            
 ```
 
-4. Stop services:
+3. Stop services:
 
   To delete database volumes and start fresh
 ```bash
