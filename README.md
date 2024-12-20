@@ -114,7 +114,7 @@ docker-compose build
 docker-compose up -d
 ```
 
-You can check the logs at, If the initialization is sucessfull the you can access the app at 'http://localhost:3000'
+You can check the logs using command below and if the initialization is sucessfull the you can access the app at 'http://localhost:3000'
 ```bash
 docker-compose logs -f db-innit            
 ```
