@@ -51,6 +51,7 @@ The first version (v1.0) of Othor, codenamed RuneWeaver, was officially launched
 ├── CONTRIBUTING.md
 ├── LICENSE
 ├── docker-compose.yml
+├── .env                           #root .env file
 ├── services/
 │   ├── backend-organizations/     # Organization management service
 │   ├── backend-metrics/          # Metrics dashboard service
