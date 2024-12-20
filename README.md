@@ -96,32 +96,26 @@ The platform consists of several microservices:
 
 ## Quick Start for Developers
 
-1. Install dependencies:
-```bash
-# Frontend
-cd services/othor-frontend
-npm install
-
-# Backend services
-cd services/backend-*
-pip install -r requirements.txt
-```
-
-2. Set up environment variables:
+1. Set up environment variables:
 ```bash
 cp .env.example .env
 # Edit .env with your configurations
-```
+````
 
-3. Start services:
+2. Start services:
 
-  To create database image locally 
+ Lets first create database image locally 
 ```bash
 docker-compose build
 ```
-  To starts services
+ Now lets start the service
 ```bash
 docker-compose up -d
+```
+
+You can check the logs at, If the initialization is sucessfull the you can access the app at 'http://localhost:3000'
+```bash
+docker-compose logs -f db-innit            
 ```
 
 4. Stop services:
