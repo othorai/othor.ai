@@ -98,37 +98,39 @@ The platform consists of several microservices:
 ## Quick Start for Developers
 
 1. Set up environment variables:
-```bash
-cp .env.example .env
-# Edit .env with your configurations
-````
+   ```bash
+   cp .env.example .env
+
+   # Edit .env with your configurations
+   ````
 
 2. Start services:
+   Lets first create database image locally
 
- Lets first create database image locally 
-```bash
-docker-compose build
-```
- Now lets start the service
-```bash
-docker-compose up -d
-```
+   ```bash
+   docker-compose build
+   ```
 
-You can check the logs using command below and if the initialization is sucessfull the you can access the app at 'http://localhost:3000'
-```bash
-docker-compose logs -f db-innit            
-```
+   Now lets start the service
+   ```bash
+   docker-compose up -d
+   ```
+
+   You can check the logs using command below and if the initialization is sucessfull the you can access the app at 'http://localhost:3000'
+   ```bash
+   docker-compose logs -f db-innit
+   ```
 
 3. Stop services:
+   To delete database volumes and start fresh
+   ```bash
+   docker-compose down -v
+   ```
 
-  To delete database volumes and start fresh
-```bash
-docker-compose down -v
-```
-  To just stop services
-```bash
-docker-compose down
-```
+   To just stop services
+   ```bash
+   docker-compose down
+   ```
 
 ## Deployment
 
