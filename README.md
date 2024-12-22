@@ -116,7 +116,7 @@ The platform consists of several microservices:
    docker-compose up -d
    ```
 
-   You can check the logs using command below and if the initialization is sucessfull the you can access the app at 'http://localhost:3000'
+   You can check the logs using command below and if the initialization is sucessfull the you can access the app at 'http://localhost:3000' and login using id - admin@example.com, password - admin123
    ```bash
    docker-compose logs -f db-innit
    ```
