@@ -111,14 +111,14 @@ The platform consists of several microservices:
    docker-compose build
    ```
 
-   Now lets start the service
+   Now lets start the service, after intilization you can access the app at 'http://localhost:3000' and login using id - admin@example.com, password - admin123
    ```bash
-   docker-compose up -d
+   docker-compose up
    ```
 
-   You can check the logs using command below and if the initialization is sucessfull the you can access the app at 'http://localhost:3000' and login using id - admin@example.com, password - admin123
+   You can check the logs using command below
    ```bash
-   docker-compose logs -f db-innit
+   docker-compose logs -f {microservice_name} #narrative,metrics,metric-discovery,chatbot,organization and auth
    ```
 
 3. Stop services:
