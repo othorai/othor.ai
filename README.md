@@ -132,6 +132,9 @@ The platform consists of several microservices:
    docker-compose down
    ```
 
+## Product Demo
+https://www.youtube.com/watch?v=TX_dUeZQK5g
+
 ## Team behind Othor 1.0(RuneWeaver) release
 
 | [<img src="https://github.com/NairKoroth.png" width="80px;" alt="Nair Koroth"/><br /><sub><b>NairKoroth</b></sub>](https://github.com/NairKoroth) | [<img src="https://github.com/nekender.png" width="80px;" alt="User2"/><br /><sub><b>nekender</b></sub>](https://github.com/nekender) | [<img src="https://github.com/ritttwaj.png" width="80px;" alt="User3"/><br /><sub><b>ritttwaj</b></sub>](https://github.com/ritttwaj) |
