@@ -97,14 +97,23 @@ The platform consists of several microservices:
 
 ## Quick Start for Developers
 
-1. Set up environment variables:
+1. Clone the git repository
    ```bash
-   cp .env.example .env
-
-   # Edit .env with your configurations
+   git clone --recursive https://github.com/othorai/othor.ai
    ````
 
-2. Start services:
+2. Move to directory
+   ```bash
+   cd othor.ai/
+   ````
+
+3. Set up environment variables:
+   ```bash
+   cp .env.example .env
+   ````
+   Edit .env with your configurations
+
+4. Start services:
    Lets first create database image locally
 
    ```bash
@@ -121,7 +130,7 @@ The platform consists of several microservices:
    docker-compose logs -f {microservice_name} #narrative,metrics,metric-discovery,chatbot,organization and auth
    ```
 
-3. Stop services:
+5. Stop services:
    To delete database volumes and start fresh
    ```bash
    docker-compose down -v
