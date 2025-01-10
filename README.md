@@ -42,7 +42,7 @@ Othor is built to be Fast, Simple & Secure.
 Meet our team for any commercial inquiries - https://cal.com/othor
 
 ## Stay up-to date
-The first version (v1.0) of Othor, codenamed RuneWeaver, was officially launched on December 19, 2024. Release notes - Othor RuneWeaver (Getting ready to publish).
+The first version (v1.0) of Othor, codenamed RuneWeaver, was officially launched on December 19, 2024.
 
 ## Repository Structure
 ```
