@@ -122,10 +122,12 @@ Here is a recorded installation tutorial that explains the steps below - https:/
    docker-compose build
    ```
 
-   Now lets start the service, after intilization you can access the app at 'http://localhost:3000' and login using id - admin@example.com, password - admin123
+ 
    ```bash
    docker-compose up
    ```
+
+   You can access the app at 'http://localhost:3000' and login using id - admin@example.com, password - admin123
 
    You can check the logs using command below
    ```bash
