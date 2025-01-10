@@ -97,6 +97,8 @@ The platform consists of several microservices:
 
 ## Quick Start for Developers
 
+Here is a recorded installation tutorial that explains the steps below - https://youtu.be/8NdjGs_Lwfw
+
 1. Clone the git repository
    ```bash
    git clone --recursive https://github.com/othorai/othor.ai
@@ -142,6 +144,8 @@ The platform consists of several microservices:
    ```
 
 ## Product Demo
+After installing the product successfully, watch the following video to learn how to connect to different datasources.
+
 https://www.youtube.com/watch?v=TX_dUeZQK5g
 
 ## Team behind Othor 1.0(RuneWeaver) release
