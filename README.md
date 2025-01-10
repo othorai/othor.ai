@@ -1,10 +1,10 @@
 <img width="559" alt="Othor AI Logo" src="https://github.com/user-attachments/assets/7c3fa192-950b-46f8-bfa4-dd0661de7bc1" />
 
-# Othor AI - 🚀 Data to Dashboards in Less than 10 minutes
+# Othor AI - 🚀 Data to Dashboards in Less than 30 seconds
 [![stability-beta](https://img.shields.io/badge/stability-beta-33bbff.svg)](https://github.com/mkenney/software-guides/blob/master/STABILITY-BADGES.md#beta)
  ![Static Badge](https://img.shields.io/badge/v1.0_release_date-19_Dec_24-purple)
 
-An AI-native fast, simple, and secure alternative to popular business intelligence solutions like Tableau, Power BI, and Looker. Othor utilizes large language models (LLMs) to deliver custom business intelligence solutions in minutes. Visit https://othor.ai/ to know more and book a demo.
+An AI-native fast, simple, and secure alternative to popular business intelligence solutions like Tableau, Power BI, and Looker. Othor utilizes large language models (LLMs) to deliver custom business intelligence solutions in seconds. Visit https://othor.ai/ to know more and book a demo.
 
 Othor is built to be Fast, Simple & Secure.
 1. **Fast & Modern**- Built with FastAPI for lightning-speed insights and real-time data updates.
