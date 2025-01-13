@@ -4,7 +4,9 @@
 [![stability-beta](https://img.shields.io/badge/stability-beta-33bbff.svg)](https://github.com/mkenney/software-guides/blob/master/STABILITY-BADGES.md#beta)
  ![Static Badge](https://img.shields.io/badge/v1.0_release_date-19_Dec_24-purple)
 
-An AI-native fast, simple, and secure alternative to popular business intelligence solutions like Tableau, Power BI, and Looker. Othor utilizes large language models (LLMs) to deliver custom business intelligence solutions in seconds. Visit https://othor.ai/ to know more and book a demo.
+Othor AI is a decision intelligence agent that processes your data, documents, and business in real time, delivering the right insights at the right moment to drive your success. Welcome to the future of Business Intelligence.
+
+Othor utilizes large language models (LLMs) to deliver custom business intelligence solutions in seconds. Visit https://othor.ai/ to know more and book a demo.
 
 Othor is built to be Fast, Simple & Secure.
 1. **Fast & Modern**- Built with FastAPI for lightning-speed insights and real-time data updates.
