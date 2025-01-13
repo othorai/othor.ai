@@ -4,7 +4,7 @@
 [![stability-beta](https://img.shields.io/badge/stability-beta-33bbff.svg)](https://github.com/mkenney/software-guides/blob/master/STABILITY-BADGES.md#beta)
  ![Static Badge](https://img.shields.io/badge/v1.0_release_date-19_Dec_24-purple)
 
-Othor AI is a decision intelligence agent that processes your data, documents, and business in real time, delivering the right insights at the right moment to drive your success. Welcome to the future of Business Intelligence.
+Othor AI is a decision intelligence agent that processes your data in real time, delivering the right insights at the right moment to drive your success. Welcome to the future of Business Intelligence.
 
 Othor utilizes large language models (LLMs) to deliver custom business intelligence solutions in seconds. Visit https://othor.ai/ to know more and book a demo.
 
