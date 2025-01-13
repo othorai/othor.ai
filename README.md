@@ -1,10 +1,12 @@
 <img width="559" alt="Othor AI Logo" src="https://github.com/user-attachments/assets/7c3fa192-950b-46f8-bfa4-dd0661de7bc1" />
 
-# Othor AI - 🚀 Data to Dashboards in Less than 30 seconds
+# Othor AI - 🌅 Make Great Decisions Every Day
 [![stability-beta](https://img.shields.io/badge/stability-beta-33bbff.svg)](https://github.com/mkenney/software-guides/blob/master/STABILITY-BADGES.md#beta)
  ![Static Badge](https://img.shields.io/badge/v1.0_release_date-19_Dec_24-purple)
 
-An AI-native fast, simple, and secure alternative to popular business intelligence solutions like Tableau, Power BI, and Looker. Othor utilizes large language models (LLMs) to deliver custom business intelligence solutions in seconds. Visit https://othor.ai/ to know more and book a demo.
+Othor AI is a decision intelligence agent that processes your data in real time, delivering the right insights at the right moment to drive your success. Welcome to the future of Business Intelligence.
+
+Othor utilizes large language models (LLMs) to deliver custom business intelligence solutions in seconds. Visit https://othor.ai/ to know more and book a demo.
 
 Othor is built to be Fast, Simple & Secure.
 1. **Fast & Modern**- Built with FastAPI for lightning-speed insights and real-time data updates.
@@ -159,11 +161,12 @@ https://www.youtube.com/watch?v=TX_dUeZQK5g
 1. Single Sign-On (SSO) and integrations with popular applications
 2. Additional data source connectors
 3. LLM Switcher & LLM connectors
-4. New layout options for narratives
-5. Expanded chart types for dashboards
-6. Mobile app (Enterprise License)
-7. Email alerts
-8. Themes
+4. Insights from documents
+5. New layout options for narratives
+6. Expanded chart types for dashboards
+7. Mobile app (Enterprise License)
+8. Email alerts
+9. Themes
 
 ## Othor 2.0 - Bifrost 🌈
 We’re here for the long haul. Expect a major release of Othor 2.0 in 2025! Take a look at our labs and research(https://othor.ai/labs/) to catch a glimpse of what we’re planning for Bifrost (Othor 2.0). Bifrost will be more collaborative, more enterprise-focused, and even more magical than RuneWeaver (Othor 1.0), while preserving its simplicity, speed, and security.
