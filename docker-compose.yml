@@ -4,6 +4,8 @@ version: '3.8'
 services:
   # Frontend Service
   frontend:
+    env_file:
+     - .env  
     build:
       context: ./services/othor-frontend
       dockerfile: Dockerfile.dev
@@ -15,6 +17,12 @@ services:
     environment:
       - NODE_ENV=development
       - NEXT_PUBLIC_API_URL=${FRONTEND_URL}
+      - NEXT_PUBLIC_MAX_DATA_SOURCES=${NEXT_PUBLIC_MAX_DATA_SOURCES:-}
+      - NEXT_PUBLIC_TEAM_MEMBERS=${NEXT_PUBLIC_TEAM_MEMBERS:-}
+      - NEXT_PUBLIC_CHATBOT_LIMIT_PER_HOUR=${NEXT_PUBLIC_CHATBOT_LIMIT_PER_HOUR:-}
+      - NEXT_PUBLIC_MAX_WORKSPACES=${NEXT_PUBLIC_MAX_WORKSPACES:-}
+      - NEXT_PUBLIC_WORKSPACE_RATE_LIMIT=${NEXT_PUBLIC_WORKSPACE_RATE_LIMIT:-}
+      - NEXT_PUBLIC_DATA_SOURCE_RATE_LIMIT=${NEXT_PUBLIC_DATA_SOURCE_RATE_LIMIT:-}
     depends_on:
       - organizations
       - metrics
