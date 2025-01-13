@@ -161,11 +161,12 @@ https://www.youtube.com/watch?v=TX_dUeZQK5g
 1. Single Sign-On (SSO) and integrations with popular applications
 2. Additional data source connectors
 3. LLM Switcher & LLM connectors
-4. New layout options for narratives
-5. Expanded chart types for dashboards
-6. Mobile app (Enterprise License)
-7. Email alerts
-8. Themes
+4. Insights from documents
+5. New layout options for narratives
+6. Expanded chart types for dashboards
+7. Mobile app (Enterprise License)
+8. Email alerts
+9. Themes
 
 ## Othor 2.0 - Bifrost 🌈
 We’re here for the long haul. Expect a major release of Othor 2.0 in 2025! Take a look at our labs and research(https://othor.ai/labs/) to catch a glimpse of what we’re planning for Bifrost (Othor 2.0). Bifrost will be more collaborative, more enterprise-focused, and even more magical than RuneWeaver (Othor 1.0), while preserving its simplicity, speed, and security.
