@@ -1,6 +1,6 @@
 <img width="559" alt="Othor AI Logo" src="https://github.com/user-attachments/assets/7c3fa192-950b-46f8-bfa4-dd0661de7bc1" />
 
-# Othor AI - 🚀 Make Great Decisions Every Day
+# Othor AI - 🌅 Make Great Decisions Every Day
 [![stability-beta](https://img.shields.io/badge/stability-beta-33bbff.svg)](https://github.com/mkenney/software-guides/blob/master/STABILITY-BADGES.md#beta)
  ![Static Badge](https://img.shields.io/badge/v1.0_release_date-19_Dec_24-purple)
 
