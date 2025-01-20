@@ -1,11 +1,24 @@
 #init-scripts/init.sh
 
 #!/bin/bash
-# Enable verbose output
-set -x
+# Set safe shell options
+set -euo pipefail
+IFS=$'\n\t'
 
-# Create log directory
-mkdir -p /var/log/init
+# Enable verbose output
+if [ "$(uname)" = "Windows_NT" ]; then
+    # Handle Windows-specific issues
+    export MSYS_NO_PATHCONV=1
+    export MSYS2_ARG_CONV_EXCL="*"
+fi
+
+# Create log directory with proper error handling
+mkdir -p /var/log/init || {
+    echo "Failed to create log directory"
+    exit 1
+}
+
+# Redirect output to log file
 exec 1> >(tee -a "/var/log/init/init.log") 2>&1
 
 echo "=== Starting initialization at $(date) ==="
@@ -67,14 +80,24 @@ done
 echo "PostgreSQL is available. Starting initialization..."
 
 # Initialize single database
+# Initialize single database
 dbname="othor_db"
 echo "=== Processing database: $dbname ==="
 
-# Create database if it doesn't exist
-if ! PGPASSWORD=$POSTGRES_PASSWORD psql -h "$POSTGRES_HOST" -U "$POSTGRES_USER" -lqt | cut -d \| -f 1 | grep -qw "$dbname"; then
+# Check if database exists more robustly
+if PGPASSWORD=$POSTGRES_PASSWORD psql -h "$POSTGRES_HOST" -U "$POSTGRES_USER" -lqt | cut -d \| -f 1 | grep -qw "$dbname"; then
+    echo "Database $dbname already exists, skipping creation..."
+else
     echo "Creating database $dbname..."
-    PGPASSWORD=$POSTGRES_PASSWORD psql -h "$POSTGRES_HOST" -U "$POSTGRES_USER" -c "CREATE DATABASE $dbname;"
+    if PGPASSWORD=$POSTGRES_PASSWORD psql -h "$POSTGRES_HOST" -U "$POSTGRES_USER" -c "CREATE DATABASE $dbname;" 2>/dev/null; then
+        echo "Successfully created database $dbname"
+    else
+        echo "Failed to create database $dbname, but continuing in case it was created by another process..."
+    fi
 fi
+
+# Small pause to ensure database is ready
+sleep 2
 
 # Run SQL files in order
 for sqlfile in /init-scripts/sql/0{1,2,3,4,5}-*.sql; do
@@ -85,7 +108,7 @@ for sqlfile in /init-scripts/sql/0{1,2,3,4,5}-*.sql; do
             exit 1
         fi
     else
-        echo "Warning: SQL file $sqlfile not found"
+        echo "Warning: SQL file pattern $sqlfile not found"
     fi
 done
 

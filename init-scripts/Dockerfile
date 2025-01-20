@@ -1,11 +1,12 @@
-#init-scripts/Dockerfile
+# init-scripts/Dockerfile
 FROM postgres:14-alpine
 
-# Install necessary tools
+# Install necessary tools including dos2unix for line ending conversion
 RUN apk add --no-cache \
     bash \
     curl \
-    postgresql-contrib
+    postgresql-contrib \
+    dos2unix
 
 # Stay as root for directory creation and permission setting
 USER root
@@ -20,8 +21,9 @@ COPY sql/*.sql /init-scripts/sql/
 COPY init.sh /init-scripts/
 COPY sample-data/*.csv /sample-data/
 
-# Set permissions for everything at once
-RUN chown -R postgres:postgres /init-scripts /sample-data /var/log/init && \
+# Convert line endings and set permissions
+RUN find /init-scripts -type f \( -name "*.sh" -o -name "*.sql" \) -exec dos2unix {} \; && \
+    chown -R postgres:postgres /init-scripts /sample-data /var/log/init && \
     chmod -R 755 /init-scripts && \
     chmod -R 644 /sample-data/*.csv && \
     chmod +x /init-scripts/init.sh && \
@@ -33,4 +35,5 @@ WORKDIR /init-scripts
 # Finally switch to postgres user
 USER postgres
 
-CMD ["./init.sh"]
+# Ensure script is executed with bash
+CMD ["bash", "./init.sh"]
