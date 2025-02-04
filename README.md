@@ -1,10 +1,11 @@
-We have discontinued official support for this repository. Go to [Project Updates](#project-updates)
-
-<img width="559" alt="Othor AI Logo" src="https://github.com/user-attachments/assets/7c3fa192-950b-46f8-bfa4-dd0661de7bc1" />
+### ⚠️ Important Note
+We have discontinued official support for this repository. See [Project Updates](#project-updates)
 
 # Othor AI - 🌅 Make Great Decisions Every Day
 [![stability-beta](https://img.shields.io/badge/stability-beta-33bbff.svg)](https://github.com/mkenney/software-guides/blob/master/STABILITY-BADGES.md#beta)
  ![Static Badge](https://img.shields.io/badge/v1.0_release_date-19_Dec_24-purple)
+
+<img width="559" alt="Othor AI Logo" src="https://github.com/user-attachments/assets/7c3fa192-950b-46f8-bfa4-dd0661de7bc1" />
 
 Othor AI is a decision intelligence agent that processes your data in real time, delivering the right insights at the right moment to drive your success. Welcome to the future of Business Intelligence.
 
