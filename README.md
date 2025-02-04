@@ -1,4 +1,4 @@
-We have stopped the official support to this repository. Got [Project Updates](#project-updates)
+We have discontinued official support for this repository. Go to [Project Updates](#project-updates)
 
 <img width="559" alt="Othor AI Logo" src="https://github.com/user-attachments/assets/7c3fa192-950b-46f8-bfa4-dd0661de7bc1" />
 
