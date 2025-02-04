@@ -1,3 +1,5 @@
+We have stopped the official support to this repository. Got [Project Updates](#project-updates)
+
 <img width="559" alt="Othor AI Logo" src="https://github.com/user-attachments/assets/7c3fa192-950b-46f8-bfa4-dd0661de7bc1" />
 
 # Othor AI - 🌅 Make Great Decisions Every Day
@@ -22,7 +24,6 @@ Othor is built to be Fast, Simple & Secure.
 - 🔐 **Enterprise Security**: Role-based access control and secure data handling
 
 
-
 ### Built with
 - Python
 - FastAPI
@@ -43,8 +44,10 @@ Othor is built to be Fast, Simple & Secure.
 ## Contact us
 Meet our team for any commercial inquiries - https://cal.com/othor
 
-## Stay up-to date
-The first version (v1.0) of Othor, codenamed RuneWeaver, was officially launched on December 19, 2024.
+## Project-Updates
+The first version of Othor, codenamed RuneWeaver, was officially launched on December 19, 2024. We continued to improve and support the open-source version until January 2024. However, we made the difficult decision to discontinue the open-source project after struggling to secure sponsorships. Additionally, we recognized that addressing issues raised by the open-source community was becoming a distraction from our core vision of building the fastest BI solution available.
+
+After redirecting our time and resources away from supporting and promoting the open-source project, we focused all our efforts on realizing our vision for Othor AI as the fastest BI solution. The results have been truly impressive. We invite you to check out what we've accomplished at https://othor.ai, where you can explore the new features we've developed and even try a free demo.
 
 ## Repository Structure
 ```
@@ -156,27 +159,6 @@ https://www.youtube.com/watch?v=TX_dUeZQK5g
 
 | [<img src="https://github.com/NairKoroth.png" width="80px;" alt="Nair Koroth"/><br /><sub><b>NairKoroth</b></sub>](https://github.com/NairKoroth) | [<img src="https://github.com/nekender.png" width="80px;" alt="User2"/><br /><sub><b>nekender</b></sub>](https://github.com/nekender) | [<img src="https://github.com/ritttwaj.png" width="80px;" alt="User3"/><br /><sub><b>ritttwaj</b></sub>](https://github.com/ritttwaj) |
 | :---: | :---: | :---: |
-
-## Upcoming Releases: What We're Working On
-1. Single Sign-On (SSO) and integrations with popular applications
-2. Additional data source connectors
-3. LLM Switcher & LLM connectors
-4. Insights from documents
-5. New layout options for narratives
-6. Expanded chart types for dashboards
-7. Mobile app (Enterprise License)
-8. Email alerts
-9. Themes
-
-## Othor 2.0 - Bifrost
-We’re here for the long haul. Expect a major release of Othor 2.0 in 2025! Take a look at our labs and research(https://othor.ai/labs/) to catch a glimpse of what we’re planning for Bifrost (Othor 2.0). Bifrost will be more collaborative, more enterprise-focused, and even more magical than RuneWeaver (Othor 1.0), while preserving its simplicity, speed, and security.
-
-## Support Othor AI
-If you like the product we’ve built and what we’re striving for in the long term, please help promote Othor within your network. We’re also raising funds. For a detailed pitch deck, contact us at uk@othor.ai.
-
-## Contributing
-
-We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
 ## License
 
