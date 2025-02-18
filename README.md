@@ -46,7 +46,7 @@ Othor is built to be Fast, Simple & Secure.
 Meet our team for any commercial inquiries - https://cal.com/othor
 
 ## Project-Updates
-The first version of Othor, codenamed RuneWeaver, was officially launched on December 19, 2024. We continued to improve and support the open-source version until January 2024. However, we made the difficult decision to discontinue the open-source project after struggling to secure sponsorships. Additionally, we recognized that addressing issues raised by the open-source community was becoming a distraction from our core vision of building the fastest BI solution available.
+The first version of Othor, codenamed RuneWeaver, was officially launched on December 19, 2024. We continued to improve and support the open-source version until January 2024. However, we made the difficult decision to discontinue the open-source project. Additionally, we recognized that addressing issues raised by the open-source community was becoming a distraction from our core vision of building the fastest BI solution available.
 
 After redirecting our time and resources away from supporting and promoting the open-source project, we focused all our efforts on realizing our vision for Othor AI as the fastest BI solution. The results have been truly impressive. We invite you to check out what we've accomplished at https://othor.ai, where you can explore the new features we've developed and even try a free demo.
 
