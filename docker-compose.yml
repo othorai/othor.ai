@@ -130,6 +130,14 @@ services:
       - JWT_ALGORITHM=${ALGORITHM}
       - SENDER_NAME=${APP_NAME}
       - FRONTEND_URL=${FRONTEND_URL}
+      - AWS_REGION=${AWS_REGION}
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - EMAIL_FROM=${EMAIL_FROM}
+      - EMAIL_VERIFICATION_TIMEOUT=${EMAIL_VERIFICATION_TIMEOUT}
+      - MAILCHIMP_API_KEY=${MAILCHIMP_API_KEY}
+      - MAILCHIMP_LIST_ID=${MAILCHIMP_LIST_ID}
+      - MAILCHIMP_SERVER=${MAILCHIMP_SERVER}
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
       interval: 10s
@@ -207,27 +215,27 @@ services:
       retries: 5
 
   # Database Initializer Service
-  db-init:
-    env_file:
-     - .env
-    build:
-      context: ./init-scripts
-      dockerfile: Dockerfile
-    environment:
-      - POSTGRES_USER=${DB_USER:-postgres}
-      - POSTGRES_PASSWORD=${DB_PASSWORD:-postgres}
-      - POSTGRES_HOST=postgres
-      - POSTGRES_DB=${DB_NAME:-othor_db}
-      - OPENAI_API_KEY=${OPENAI_API_KEY}
-      - JWT_SECRET=${SECRET_KEY}
-    volumes:
-      - ./init-scripts/sample-data:/sample-data:ro
-    depends_on:
-      postgres:
-        condition: service_healthy
-      auth:
-        condition: service_started
-    restart: on-failure:3
+  # db-init:
+  #   env_file:
+  #    - .env
+  #   build:
+  #     context: ./init-scripts
+  #     dockerfile: Dockerfile
+  #   environment:
+  #     - POSTGRES_USER=${DB_USER:-postgres}
+  #     - POSTGRES_PASSWORD=${DB_PASSWORD:-postgres}
+  #     - POSTGRES_HOST=postgres
+  #     - POSTGRES_DB=${DB_NAME:-othor_db}
+  #     - OPENAI_API_KEY=${OPENAI_API_KEY}
+  #     - JWT_SECRET=${SECRET_KEY}
+  #   volumes:
+  #     - ./init-scripts/sample-data:/sample-data:ro
+  #   depends_on:
+  #     postgres:
+  #       condition: service_healthy
+  #     auth:
+  #       condition: service_started
+  #   restart: on-failure:3
 
   # Redis for caching
   redis:
