@@ -41,11 +41,11 @@ services:
       context: ./services/backend-vpn-connector
       dockerfile: Dockerfile.dev
     ports:
-      - "8007:8007"
+      - "8007:8000"
     volumes:
       - ./services/backend-vpn-connector:/app
-      - vpn-configs:/etc/openvpn/configs
       - vpn-auth:/etc/openvpn/auth
+      - vpn-configs:/etc/openvpn/configs
     cap_add:
       - NET_ADMIN
       - NET_RAW
@@ -71,7 +71,6 @@ services:
       - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
       - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
       - VPN_NETWORK=10.8.0.0/24
-      - PORT=8007
   
   # Organization Service
   organizations:
@@ -81,9 +80,10 @@ services:
       context: ./services/backend-organizations
       dockerfile: Dockerfile.dev
     ports:
-      - "8005:8000"
+      - "8001:8000"
     volumes:
       - ./services/backend-organizations:/app
+      - vpn-auth:/etc/openvpn/auth
     environment:
       - POSTGRES_HOST=${DB_HOST}
       - POSTGRES_DB=${DB_NAME}
@@ -107,6 +107,7 @@ services:
       - "8002:8000"
     volumes:
       - ./services/backend-metrics:/app
+      - vpn-auth:/etc/openvpn/auth
     environment:
       - POSTGRES_HOST=${DB_HOST}
       - POSTGRES_DB=${DB_NAME}
@@ -130,6 +131,7 @@ services:
       - "8003:8000"
     volumes:
       - ./services/backend-metric-discovery:/app
+      - vpn-auth:/etc/openvpn/auth
     environment:
       - POSTGRES_HOST=${DB_HOST}
       - POSTGRES_DB=${DB_NAME}
@@ -161,9 +163,7 @@ services:
       - "8004:8000"
     volumes:
       - ./services/backend-auth:/app
-    networks:
-      - vpn-network
-      - default
+      - vpn-auth:/etc/openvpn/auth
     environment:
       - POSTGRES_HOST=${DB_HOST}
       - POSTGRES_DB=${DB_NAME}
@@ -184,9 +184,6 @@ services:
       - MAILCHIMP_API_KEY=${MAILCHIMP_API_KEY}
       - MAILCHIMP_LIST_ID=${MAILCHIMP_LIST_ID}
       - MAILCHIMP_SERVER=${MAILCHIMP_SERVER}
-      - NARRATIVE_SERVICE_URL=http://backend-vpn-connector:8001
-      - DATA_SOURCE_SERVICE_URL=http://backend-vpn-connector:8001
-      - ORGANIZATIONS_SERVICE_URL=http://organizations:8000
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
       interval: 10s
@@ -201,20 +198,17 @@ services:
   narrative:
     container_name: narrative
     env_file:
-      - .env 
+     - .env 
     build:
       context: ./services/backend-narrative-and-datasource
       dockerfile: Dockerfile.dev
-    command: uvicorn app.main:app --host 0.0.0.0 --port 8001
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8001 
     volumes:
       - ./services/backend-narrative-and-datasource:/app
       - vpn-auth:/etc/openvpn/auth
     depends_on:
       - backend-vpn-connector
     network_mode: "service:backend-vpn-connector"
-    cap_add:
-      - NET_ADMIN
-      - NET_RAW
     environment:
       - POSTGRES_HOST=${DB_HOST}
       - POSTGRES_DB=${DB_NAME}
@@ -225,7 +219,6 @@ services:
       - DATABASE_URL=postgresql://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}?sslmode=disable
       - JWT_SECRET=${SECRET_KEY}
       - OPENAI_API_KEY=${OPENAI_API_KEY}
-      - HDB_USE_SOURCE_IP=10.81.234.2
 
   # Chatbot Service
   chatbot:
@@ -238,6 +231,7 @@ services:
       - "8006:8000"
     volumes:
       - ./services/backend-chatbot:/app
+      - vpn-auth:/etc/openvpn/auth
     environment:
       - POSTGRES_HOST=${DB_HOST}
       - POSTGRES_DB=${DB_NAME}
@@ -259,6 +253,7 @@ services:
      - .env
     volumes:
       - postgres_data:/var/lib/postgresql/data
+      - vpn-auth:/etc/openvpn/auth
     environment:
       - POSTGRES_USER=${DB_USER:-postgres}
       - POSTGRES_PASSWORD=${DB_PASSWORD:-postgres}
@@ -285,6 +280,7 @@ services:
   #     - JWT_SECRET=${SECRET_KEY}
   #   volumes:
   #     - ./init-scripts/sample-data:/sample-data:ro
+      - vpn-auth:/etc/openvpn/auth
   #   depends_on:
   #     postgres:
   #       condition: service_healthy
@@ -299,6 +295,7 @@ services:
       - "6379:6379"
     volumes:
       - redis_data:/data
+      - vpn-auth:/etc/openvpn/auth
 
   # Nginx Reverse Proxy
   nginx:
@@ -331,6 +328,6 @@ networks:
 
 volumes:
   postgres_data:  
+      - vpn-auth:/etc/openvpn/auth
   redis_data:
-  vpn-configs:
-  vpn-auth:
+  vpn-configs:        vpn-auth:

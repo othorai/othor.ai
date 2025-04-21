@@ -1,0 +1,6 @@
+
+volumes:
+  postgres_data:
+  redis_data:
+  vpn-configs:
+  vpn-auth:
