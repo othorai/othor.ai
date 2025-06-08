@@ -22,3 +22,6 @@
 [submodule "services/backend-narrative-and-datasource"]
 	path = services/backend-narrative-and-datasource
 	url = https://github.com/othorai/backend-narrative-and-datasource.git
+[submodule "services/backend-vpn-connector"]
+	path = services/backend-vpn-connector
+	url = git@github.com:othorai/backend-vpn-connector.git
