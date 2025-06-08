@@ -5,6 +5,7 @@
   },
   "dependencies": {
     "@radix-ui/react-separator": "^1.1.0",
+    "jwt-decode": "^4.0.0",
     "zustand": "^5.0.2"
   }
 }

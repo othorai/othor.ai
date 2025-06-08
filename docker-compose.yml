@@ -29,6 +29,59 @@ services:
       - auth
       - narrative
       - chatbot
+      - backend-vpn-connector 
+    networks:
+      - vpn-network
+      - default
+  
+  # VPN Connector Service
+  backend-vpn-connector:
+    container_name: backend-vpn-connector
+    build:
+      context: ./services/backend-vpn-connector
+      dockerfile: Dockerfile.dev
+    ports:
+      - "8007:8007"
+    volumes:
+      - ./services/backend-vpn-connector:/app
+      - vpn-configs:/etc/openvpn/configs
+      - vpn-auth:/etc/openvpn/auth
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    privileged: true
+    devices:
+      - /dev/net/tun:/dev/net/tun
+      - /dev/ppp:/dev/ppp
+    sysctls:
+      - net.ipv4.ip_forward=1
+    networks:
+      - vpn-network
+      - default
+    environment:
+      - DB_HOST=172.20.38.116
+      - DB_PORT=30115
+      - DB_NAME=BHP
+      - DB_USER=SAPABAP1
+      - DB_PASSWORD=Bplm1234
+      - DB_SCHEMA=SAPABAP1
+      - DB_SSLMODE=disable
+      - JWT_SECRET=${SECRET_KEY}
+      - JWT_ALGORITHM=${ALGORITHM}
+      - AWS_REGION=${AWS_REGION}
+      - AWS_SECRET_PREFIX=${AWS_SECRET_PREFIX}
+      - AWS_ACCOUNT_ID=${AWS_ACCOUNT_ID}
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - VPN_NETWORK=10.8.0.0/24
+      - PORT=8007
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8007/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 5s
+    restart: unless-stopped
 
   # Organization Service
   organizations:
@@ -38,7 +91,7 @@ services:
       context: ./services/backend-organizations
       dockerfile: Dockerfile.dev
     ports:
-      - "8001:8000"
+      - "8005:8000"
     volumes:
       - ./services/backend-organizations:/app
     environment:
@@ -60,10 +113,10 @@ services:
     build:
       context: ./services/backend-metrics
       dockerfile: Dockerfile.dev
-    ports:
-      - "8002:8000"
     volumes:
       - ./services/backend-metrics:/app
+    network_mode: "service:backend-vpn-connector"
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8002
     environment:
       - POSTGRES_HOST=${DB_HOST}
       - POSTGRES_DB=${DB_NAME}
@@ -100,8 +153,6 @@ services:
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
       interval: 10s
-      timeout: 5s
-      retries: 5
     depends_on:
       postgres:
         condition: service_healthy
@@ -118,6 +169,9 @@ services:
       - "8004:8000"
     volumes:
       - ./services/backend-auth:/app
+    networks:
+      - vpn-network
+      - default
     environment:
       - POSTGRES_HOST=${DB_HOST}
       - POSTGRES_DB=${DB_NAME}
@@ -138,6 +192,11 @@ services:
       - MAILCHIMP_API_KEY=${MAILCHIMP_API_KEY}
       - MAILCHIMP_LIST_ID=${MAILCHIMP_LIST_ID}
       - MAILCHIMP_SERVER=${MAILCHIMP_SERVER}
+      - NARRATIVE_SERVICE_URL=http://backend-vpn-connector:8001
+      - DATA_SOURCE_SERVICE_URL=http://backend-vpn-connector:8001
+      - ORGANIZATIONS_SERVICE_URL=http://organizations:8000
+      - METRICS_SERVICE_URL=http://backend-vpn-connector:8002
+      - VPN_CONNECTOR_SERVICE_URL=http://backend-vpn-connector:8007
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
       interval: 10s
@@ -150,15 +209,23 @@ services:
 
   # Narrative Service
   narrative:
+    container_name: narrative
     env_file:
-     - .env
+      - .env 
     build:
       context: ./services/backend-narrative-and-datasource
       dockerfile: Dockerfile.dev
-    ports:
-      - "8005:8000"
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8001
     volumes:
       - ./services/backend-narrative-and-datasource:/app
+      - vpn-auth:/etc/openvpn/auth
+    depends_on:
+      backend-vpn-connector:
+        condition: service_healthy
+    network_mode: "service:backend-vpn-connector"
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
     environment:
       - POSTGRES_HOST=${DB_HOST}
       - POSTGRES_DB=${DB_NAME}
@@ -169,8 +236,7 @@ services:
       - DATABASE_URL=postgresql://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}?sslmode=disable
       - JWT_SECRET=${SECRET_KEY}
       - OPENAI_API_KEY=${OPENAI_API_KEY}
-    depends_on:
-      - postgres
+      - HDB_USE_SOURCE_IP=10.81.234.2
 
   # Chatbot Service
   chatbot:
@@ -251,6 +317,8 @@ services:
     ports:
       - "80:80"
     volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - vpn-auth:/etc/openvpn/auth
       - type: bind
         source: ./nginx/nginx.conf
         target: /etc/nginx/nginx.conf
@@ -262,7 +330,18 @@ services:
       - auth
       - narrative
       - chatbot
+    networks:
+      - vpn-network
+      - default
+
+networks:
+  vpn-network:
+    driver: bridge
+  default:
+    driver: bridge
 
 volumes:
   postgres_data:  
-  redis_data:      
+  redis_data:
+  vpn-configs:
+  vpn-auth:
