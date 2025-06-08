@@ -1,0 +1,47 @@
+FROM python:3.9-slim
+
+WORKDIR /app
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    curl \
+    gcc \
+    python3-dev \
+    libpq-dev \
+    openvpn \
+    iptables \
+    openssh-client \
+    iproute2 \
+    iputils-ping \
+    freetds-dev \
+    freetds-bin \
+    unixodbc \
+    unixodbc-dev \
+    tdsodbc \
+    openfortivpn \
+    ppp \
+    && rm -rf /var/lib/apt/lists/*
+
+# Create /dev/ppp device node if it does not exist (needed for openfortivpn PPP mode)
+RUN [ -c /dev/ppp ] || mknod /dev/ppp c 108 0
+
+# Configure FreeTDS
+RUN echo "[FreeTDS]\n\
+Description = FreeTDS Driver\n\
+Driver = /usr/lib/aarch64-linux-gnu/odbc/libtdsodbc.so\n\
+Setup = /usr/lib/aarch64-linux-gnu/odbc/libtdsS.so" > /etc/odbcinst.ini
+
+# Create necessary directories with proper permissions
+RUN mkdir -p /etc/openvpn/configs /var/log/openvpn && \
+    chmod 700 /etc/openvpn/configs
+
+# Install Python dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt
+
+# Copy application code
+COPY . .
+
+# Command to run the application
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
